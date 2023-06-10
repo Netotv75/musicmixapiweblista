@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>player online</title>
+  <style>
+    body {
+      background: linear-gradient(to right, White, Grey);
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px;
+    }
+
+    .text {
+      font-size: 24px;
+      color: white;
+      background: linear-gradient(to right, Blue, Green);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientAnimation 5s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text"></h1>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #song-list {
+      margin-top: 20px;
+    }
+
+    .song {
+      list-style-type: none;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .song:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="music-player">
+    <div id="player-controls">
+      
+    </div>
+    <div id="song-list">
+      <ul>
+        <li class="song" data-src="Yo_Te_Dir_.mp3">yo te dirde</li>
+        <li class="song" data-src="No_Dejes_Que___.mp3">no dejes que</li>
+        <li class="song" data-src="Un_D_a_Normal_-_Remastered_2022.mp3 ">un día normal</li>
+        <li class="song" data-src="Juan Luis Guerra 4.40 - Bachata Rosa (Lyric video) Remastered.mp3 ">Bachata rosa</li>
+        <li class="song" data-src="Shabadabada.mp3">shabadabada</li>
+        <li class="song" data-src="Nubes.mp3 ">Nubes</li>
+        <li class="song" data-src="T__Necesitas.mp3 ">tu necesitas </li>
+        <li class="song" data-src="Paradise.mp3 ">paradise</li>
+        <li class="song" data-src="Tabaco_Y_Chanel.mp3 ">tabaco y chanel</li>
+      </ul>
+    </div>
+    <audio id="audio-player" controls></audio>
+  </div>
+  
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const songs = document.querySelectorAll('.song');
+      const audioPlayer = document.getElementById('audio-player');
+      let currentSong = null;
+
+      function playSong(song) {
+        const songSrc = song.getAttribute('data-src');
+        if (currentSong !== song) {
+          currentSong = song;
+          audioPlayer.src = songSrc;
+          audioPlayer.play();
+          songs.forEach((song) => {
+            song.classList.remove('active');
+          });
+          song.classList.add('active');
+        }
+      }
+
+      songs.forEach((song) => {
+        song.addEventListener('click', () => {
+          playSong(song);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
